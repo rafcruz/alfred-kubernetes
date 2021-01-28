@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+    name: gestor-ssl-certificate
+    namespace: gestor
+spec:
+    domains:
+        - gestorapi.alfreddelivery.com

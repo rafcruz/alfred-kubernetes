@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: image-config
+  namespace: image
+data:
+  SERVER_PORT: "3200"
