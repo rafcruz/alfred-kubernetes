@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: supplier-config
+  namespace: supplier
+data:
+  ENVIRONMENT: "production"
+  # Endpoints
+  REACT_APP_HOST: "https://backofficeapi.alfreddelivery.com/"
+  IMAGE_APP_HOST: "https://imageapi.alfreddelivery.com/"

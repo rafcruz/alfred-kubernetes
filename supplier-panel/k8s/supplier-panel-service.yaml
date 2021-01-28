@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: supplier
+    namespace: supplier
+    labels:
+        app: supplier
+        tier: frontend
+spec:
+    type: NodePort
+    ports:
+        - port: 3000
+    selector:
+        app: supplier
+        tier: frontend
+
+---
+
+apiVersion: cloud.google.com/v1beta1
+kind: BackendConfig
+metadata:
+    name: supplier-service-backendconfig
+    namespace: supplier
+spec:
+    timeoutSec: 80000
+    connectionDraining:
+        drainingTimeoutSec: 3600 # time to complete connections
