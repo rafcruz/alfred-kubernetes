@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/gestor-api:0.2
+                - image: gcr.io/alfred-302520/gestor-api:0.3
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: gestor
