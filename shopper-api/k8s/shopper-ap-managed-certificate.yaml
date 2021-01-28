@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+    name: shopper-ssl-certificate
+    namespace: shopper
+spec:
+    domains:
+        - shopperapi.alfreddelivery.com

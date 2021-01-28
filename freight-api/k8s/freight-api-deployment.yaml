@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: freight-deployment
+    namespace: freight
+    labels:
+        app: freight
+        tier: frontend
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: freight
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 2
+            maxUnavailable: 1
+    template:
+        metadata:
+            labels:
+                app: freight
+                tier: frontend
+        spec:
+            containers:
+                - image: gcr.io/alfred-302520/freight-api:0.2
+                  #command: ["sleep 600"]
+                  imagePullPolicy: IfNotPresent
+                  name: freight
+                  resources:
+                    # limits:
+                    #   cpu: 2000m
+                    #   memory: 2000Mi
+                    # requests:
+                    #   cpu: 500m
+                    #   memory: 300Mi                  
+                  terminationMessagePath: /dev/termination-log
+                  terminationMessagePolicy: File
+                  envFrom:
+                  - configMapRef:
+                      name: freight-config
+                  env:
+                      - name: SERVER_DBUSER
+                        valueFrom:
+                            secretKeyRef:
+                                name: credentials-freight
+                                key: username
+                      - name: SERVER_DBPASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: credentials-freight
+                                key: password                  
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always
+            schedulerName: default-scheduler
+            securityContext: {}
+            terminationGracePeriodSeconds: 10

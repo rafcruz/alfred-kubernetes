@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alfred-config
+  namespace: alfred
+data:
+  SERVER_DB: "alfred-prod"
+  # SERVER_DBUSER: ""
+  # SERVER_DBPASSWORD: ""
+  SERVER_DBHOST: "10.24.96.13"

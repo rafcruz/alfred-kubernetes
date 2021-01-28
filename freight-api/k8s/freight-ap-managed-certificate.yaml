@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+    name: freight-ssl-certificate
+    namespace: freight
+spec:
+    domains:
+        - freightapi.alfreddelivery.com

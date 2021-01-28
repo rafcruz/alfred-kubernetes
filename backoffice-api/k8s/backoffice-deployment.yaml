@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: backoffice-deployment
+    namespace: backoffice
+    labels:
+        app: backoffice
+        tier: frontend
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: backoffice
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 2
+            maxUnavailable: 1
+    template:
+        metadata:
+            labels:
+                app: backoffice
+                tier: frontend
+        spec:
+            containers:
+                - image: gcr.io/alfred-302520/backoffice-api:0.2
+                  #command: ["sleep 600"]
+                  imagePullPolicy: IfNotPresent
+                  name: backoffice
+                  resources:
+                    # limits:
+                    #   cpu: 2000m
+                    #   memory: 2000Mi
+                    # requests:
+                    #   cpu: 500m
+                    #   memory: 300Mi                  
+                  terminationMessagePath: /dev/termination-log
+                  terminationMessagePolicy: File
+                  envFrom:
+                  - configMapRef:
+                      name: backoffice-config
+                  env:
+                      - name: SERVER_DBUSER
+                        valueFrom:
+                            secretKeyRef:
+                                name: credentials-backoffice
+                                key: username
+                      - name: SERVER_DBPASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: credentials-backoffice
+                                key: password                      
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always
+            schedulerName: default-scheduler
+            securityContext: {}
+            terminationGracePeriodSeconds: 10
