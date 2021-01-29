@@ -5,3 +5,4 @@ metadata:
   namespace: image
 data:
   SERVER_PORT: "3200"
+  IMG_PATH: "/var/arquivos/image/"
