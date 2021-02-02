@@ -4,8 +4,8 @@ metadata:
   name: backoffice-config
   namespace: backoffice
 data:
-  SERVER_DB: "alfred-prod"
+  SERVER_DB: "AlfredV1.7"
   # SERVER_DBUSER: ""
   # SERVER_DBPASSWORD: ""
   SERVER_DBHOST: "10.24.96.13"
-  SERVER_PORT: "3000"
+  SERVER_PORT: "3500"

@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/backoffice-api:0.2
+                - image: gcr.io/alfred-302520/backoffice-api:0.9.2
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: backoffice
