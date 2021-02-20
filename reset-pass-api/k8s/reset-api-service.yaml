@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: gestor
-    namespace: gestor
+    name: reset
+    namespace: reset
     labels:
-        app: gestor
+        app: reset
         tier: frontend
 spec:
     type: NodePort
     ports:
         - port: 8000
     selector:
-        app: gestor
+        app: reset
         tier: frontend
 
 ---
@@ -19,8 +19,8 @@ spec:
 apiVersion: cloud.google.com/v1beta1
 kind: BackendConfig
 metadata:
-    name: gestor-service-backendconfig
-    namespace: gestor
+    name: reset-service-backendconfig
+    namespace: reset
 spec:
     timeoutSec: 80000
     connectionDraining:

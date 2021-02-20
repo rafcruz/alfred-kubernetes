@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: gestor-deployment
-    namespace: gestor
+    name: reset-deployment
+    namespace: reset
     labels:
-        app: gestor
+        app: reset
         tier: frontend
 spec:
     replicas: 3
     selector:
         matchLabels:
-            app: gestor
+            app: reset
     strategy:
         type: RollingUpdate
         rollingUpdate:
@@ -19,14 +19,14 @@ spec:
     template:
         metadata:
             labels:
-                app: gestor
+                app: reset
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/gestor-api:0.4
+                - image: gcr.io/alfred-302520/pass-reset-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
-                  name: gestor
+                  name: reset
                   resources: 
                     limits:
                       cpu: 1000
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: gestor-config
+                      name: reset-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-gestor
+                                name: credentials-reset
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-gestor
+                                name: credentials-reset
                                 key: password
                                          
             dnsPolicy: ClusterFirst
