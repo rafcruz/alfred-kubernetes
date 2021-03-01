@@ -9,12 +9,12 @@ metadata:
         networking.gke.io/v1beta1.FrontendConfig: "supplier-frontend-config"
         #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         #kubernetes.io/ingress.allow-http: "false"
-        nginx.ingress.kubernetes.io/proxy-connect-timeout: "6000"
-        nginx.ingress.kubernetes.io/proxy-send-timeout: "6000"
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
-        ingress.kubernetes.io/proxy-connect-timeout: "6000"
-        ingress.kubernetes.io/proxy-send-timeout: "6000"
-        ingress.kubernetes.io/proxy-read-timeout: "6000"
+        nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "240s"
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "240s"
+        ingress.kubernetes.io/proxy-connect-timeout: "240s"
+        ingress.kubernetes.io/proxy-send-timeout: "240s"
+        ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
         - host: supplier.alfreddelivery.com
