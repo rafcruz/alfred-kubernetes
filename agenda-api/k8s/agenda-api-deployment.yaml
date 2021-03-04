@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: agenda-deployment
+    name: stg-agenda-deployment
     namespace: agenda
     labels:
         app: agenda
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/agenda-api:0.4
+                - image: gcr.io/alfred-302520/stg-agenda-api@sha256:964df5df7744467cd6a8dc6b86c9e2af607dc7cabbb572a06cd22a16097c0c29
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: agenda
@@ -43,12 +43,12 @@ spec:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-agenda
+                                name: stg-credentials-agenda
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-agenda
+                                name: stg-credentials-agenda
                                 key: password
                                          
             dnsPolicy: ClusterFirst

@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: agenda-ssl-certificate
+    name: stg-agenda-ssl-certificate
     namespace: agenda
 spec:
     domains:
-        - agendaapi.alfreddelivery.com
+        - dev-agendaapi.alfreddelivery.com

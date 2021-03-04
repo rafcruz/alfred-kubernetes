@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: agenda-ssl-ingress
+    name: stg-agenda-ssl-ingress
     namespace: agenda
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: agenda-ssl-ingress-ip
-        networking.gke.io/managed-certificates: agenda-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-agenda-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-agenda-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "6000"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "6000"
 spec:
     rules:
-        - host: agendaapi.alfreddelivery.com
+        - host: dev-agendaapi.alfreddelivery.com
           http:
               paths:
                   - backend:
