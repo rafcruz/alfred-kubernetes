@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: alfred-deployment
+    name: stg-alfred-deployment
     namespace: alfred
     labels:
         app: alfred
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: alfred
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/alfred-api:0.2
+                - image: gcr.io/alfred-302520/stg-alfred-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: alfred
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: alfred-config
+                      name: stg-alfred-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-alfred
+                                name: stg-credentials-alfred
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-alfred
+                                name: stg-credentials-alfred
                                 key: password                     
             dnsPolicy: ClusterFirst
             restartPolicy: Always

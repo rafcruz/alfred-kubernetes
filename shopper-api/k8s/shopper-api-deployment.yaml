@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: shopper-deployment
+    name: stg-shopper-deployment
     namespace: shopper
     labels:
         app: shopper
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: shopper
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/shopper-api:0.2
+                - image: gcr.io/alfred-302520/stg-shopper-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: shopper
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: shopper-config
+                      name: stg-shopper-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-shopper
+                                name: stg-credentials-shopper
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-shopper
+                                name: stg-credentials-shopper
                                 key: password
                                          
             dnsPolicy: ClusterFirst

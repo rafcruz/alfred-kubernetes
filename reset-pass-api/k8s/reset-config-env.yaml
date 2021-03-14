@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: reset-config
+  name: stg-reset-config
   namespace: reset
 data:
   SERVER_PORT: "8000"
-  SERVER_DB: "alfred-prod"
+  SERVER_DB: "alfred-dev"
 #  SERVER_DBUSER: "dbUser" ###DEFINIDO COMO SECRET
 #  SERVER_DBPASSWORD: "dbPass" ###DEFINIDO COMO SECRET
-  SERVER_DBHOST: "10.24.96.13"
+  SERVER_DBHOST: "10.24.96.32"
   SENDGRID_API_KEY: "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"
   SENDGRID_EMAIL: "noreply@alfreddelivery.com"
   SENDGRID_NAME: "Alfred Delivery"

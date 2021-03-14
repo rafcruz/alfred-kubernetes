@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
-  name: stg-supplier-frontend-config
-  namespace: supplier
+  name: stg-donus-frontend-config
+  namespace: donus
 spec:
   redirectToHttps:
     enabled: true

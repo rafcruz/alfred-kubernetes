@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: reset-ssl-certificate
+    name: stg-reset-ssl-certificate
     namespace: reset
 spec:
     domains:
-        - resetapi.alfreddelivery.com
+        - dev-resetapi.alfreddelivery.com

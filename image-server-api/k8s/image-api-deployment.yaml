@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: image-deployment
+    name: stg-image-deployment
     namespace: image
     labels:
         app: image
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: image
@@ -23,13 +23,13 @@ spec:
                 tier: frontend
         spec:
             volumes:
-                - name: image-tmp
+                - name: stg-image-tmp
                   nfs:
-                      server: 10.192.0.50
+                      server: 10.192.32.50
                       path: /var/arquivos/image/
                       readOnly: false
             containers:
-                - image: gcr.io/alfred-302520/image-api:0.2
+                - image: gcr.io/alfred-302520/stg-image-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: image
@@ -45,10 +45,10 @@ spec:
                   
                   envFrom:
                   - configMapRef:
-                      name: image-config
+                      name: stg-image-config
 
                   volumeMounts:
-                   - name: image-tmp
+                   - name: stg-image-tmp
                      mountPath: /var/arquivos/image                  
                                          
             dnsPolicy: ClusterFirst

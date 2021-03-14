@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: alfred-hpa
+  name: stg-alfred-hpa
   namespace: alfred
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: alfred-deployment
-  minReplicas: 3
-  maxReplicas: 6
+    name: stg-alfred-deployment
+  minReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 70

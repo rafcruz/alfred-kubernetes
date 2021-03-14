@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: gestor-hpa
+  name: stg-gestor-hpa
   namespace: gestor
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: gestor-deployment
-  minReplicas: 3
-  maxReplicas: 6
+  minReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 70

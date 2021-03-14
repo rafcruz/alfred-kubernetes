@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: alfred-ssl-certificate
+    name: stg-alfred-ssl-certificate
     namespace: alfred
 spec:
     domains:
-        - alfredapi.alfreddelivery.com
+        - dev-alfredapi.alfreddelivery.com

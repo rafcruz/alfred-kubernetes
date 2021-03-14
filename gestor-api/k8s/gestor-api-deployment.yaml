@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: gestor-deployment
+    name: stg-gestor-deployment
     namespace: gestor
     labels:
         app: gestor
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: gestor
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/gestor-api:0.4
+                - image: gcr.io/alfred-302520/stg-gestor-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: gestor
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: gestor-config
+                      name: stg-gestor-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-gestor
+                                name: stg-credentials-gestor
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-gestor
+                                name: stg-credentials-gestor
                                 key: password
                                          
             dnsPolicy: ClusterFirst

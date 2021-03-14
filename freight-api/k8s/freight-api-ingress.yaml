@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: freight-ssl-ingress
+    name: stg-freight-ssl-ingress
     namespace: freight
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: freight-ssl-ingress-ip
-        networking.gke.io/managed-certificates: freight-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-freight-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-freight-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: freightapi.alfreddelivery.com
+        - host: dev-freightapi.alfreddelivery.com
           http:
               paths:
                   - backend:

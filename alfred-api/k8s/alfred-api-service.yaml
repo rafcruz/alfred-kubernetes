@@ -19,7 +19,7 @@ spec:
 apiVersion: cloud.google.com/v1beta1
 kind: BackendConfig
 metadata:
-    name: alfred-service-backendconfig
+    name: stg-alfred-service-backendconfig
     namespace: alfred
 spec:
     timeoutSec: 80000

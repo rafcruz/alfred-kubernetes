@@ -1,0 +1,8 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+    name: stg-donus-ssl-certificate
+    namespace: donus
+spec:
+    domains:
+        - dev-donus.alfreddelivery.com

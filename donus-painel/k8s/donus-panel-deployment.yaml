@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: stg-reset-deployment
-    namespace: reset
+    name: stg-donus-deployment
+    namespace: donus
     labels:
-        app: reset
+        app: donus
         tier: frontend
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: reset
+            app: donus
     strategy:
         type: RollingUpdate
         rollingUpdate:
@@ -19,14 +19,14 @@ spec:
     template:
         metadata:
             labels:
-                app: reset
+                app: donus
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/stg-pass-reset-api:0.1
+                - image: gcr.io/alfred-302520/stg-donus-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
-                  name: reset
+                  name: donus
                   resources: 
                     limits:
                       cpu: 1000
@@ -38,18 +38,7 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: stg-reset-config
-                  env:
-                      - name: SERVER_DBUSER
-                        valueFrom:
-                            secretKeyRef:
-                                name: stg-credentials-reset
-                                key: username
-                      - name: SERVER_DBPASSWORD
-                        valueFrom:
-                            secretKeyRef:
-                                name: stg-credentials-reset
-                                key: password
+                      name: stg-donus-config
                                          
             dnsPolicy: ClusterFirst
             restartPolicy: Always

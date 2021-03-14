@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: supplier-ssl-certificate
+    name: stg-supplier-ssl-certificate
     namespace: supplier
 spec:
     domains:
-        - supplier.alfreddelivery.com
+        - dev-supplier.alfreddelivery.com

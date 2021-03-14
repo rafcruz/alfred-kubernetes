@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: image-ssl-ingress
+    name: stg-image-ssl-ingress
     namespace: image
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: image-ssl-ingress-ip
-        networking.gke.io/managed-certificates: image-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-image-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-image-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: imageapi.alfreddelivery.com
+        - host: dev-imageapi.alfreddelivery.com
           http:
               paths:
                   - backend:

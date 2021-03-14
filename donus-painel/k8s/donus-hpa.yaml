@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: freight-hpa
-  namespace: freight
+  name: stg-donus-hpa
+  namespace: donus
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: stg-freight-deployment
+    name: stg-donus-deployment
   minReplicas: 1
   maxReplicas: 3
   targetCPUUtilizationPercentage: 70

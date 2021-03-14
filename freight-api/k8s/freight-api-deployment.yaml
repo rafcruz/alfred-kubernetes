@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: freight-deployment
+    name: stg-freight-deployment
     namespace: freight
     labels:
         app: freight
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: freight
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/freight-api:0.3
+                - image: gcr.io/alfred-302520/stg-freight-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: freight
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: freight-config
+                      name: stg-freight-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-freight
+                                name: stg-credentials-freight
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-freight
+                                name: stg-credentials-freight
                                 key: password                  
             dnsPolicy: ClusterFirst
             restartPolicy: Always

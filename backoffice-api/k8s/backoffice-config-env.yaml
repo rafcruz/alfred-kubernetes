@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: backoffice-config
+  name: stg-backoffice-config
   namespace: backoffice
 data:
-  SERVER_DB: "AlfredV1.7"
+  SERVER_DB: "AlfredV1.7-dev"
   # SERVER_DBUSER: ""
   # SERVER_DBPASSWORD: ""
-  SERVER_DBHOST: "10.24.96.13"
+  SERVER_DBHOST: "10.24.96.32"
   SERVER_PORT: "3500"

@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: gestor-ssl-ingress
+    name: stg-gestor-ssl-ingress
     namespace: gestor
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: gestor-ssl-ingress-ip
-        networking.gke.io/managed-certificates: gestor-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-gestor-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-gestor-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: gestorapi.alfreddelivery.com
+        - host: dev-gestorapi.alfreddelivery.com
           http:
               paths:
                   - backend:

@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: reset-ssl-ingress
+    name: stg-reset-ssl-ingress
     namespace: reset
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: reset-ssl-ingress-ip
-        networking.gke.io/managed-certificates: reset-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-reset-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-reset-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: resetapi.alfreddelivery.com
+        - host: dev-resetapi.alfreddelivery.com
           http:
               paths:
                   - backend:

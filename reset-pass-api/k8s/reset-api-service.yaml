@@ -19,7 +19,7 @@ spec:
 apiVersion: cloud.google.com/v1beta1
 kind: BackendConfig
 metadata:
-    name: reset-service-backendconfig
+    name: stg-reset-service-backendconfig
     namespace: reset
 spec:
     timeoutSec: 80000

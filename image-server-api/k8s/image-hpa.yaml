@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: image-hpa
+  name: stg-image-hpa
   namespace: image
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: image-deployment
-  minReplicas: 3
-  maxReplicas: 6
+    name: stg-image-deployment
+  minReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 70

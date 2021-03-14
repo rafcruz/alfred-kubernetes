@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: backoffice-hpa
+  name: stg-backoffice-hpa
   namespace: backoffice
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backoffice-deployment
-  minReplicas: 3
-  maxReplicas: 6
+    name: stg-backoffice-deployment
+  minReplicas: 1
+  maxReplicas: 3
   targetCPUUtilizationPercentage: 70

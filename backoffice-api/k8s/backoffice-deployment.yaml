@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: backoffice-deployment
+    name: stg-backoffice-deployment
     namespace: backoffice
     labels:
         app: backoffice
         tier: frontend
 spec:
-    replicas: 3
+    replicas: 1
     selector:
         matchLabels:
             app: backoffice
@@ -23,7 +23,7 @@ spec:
                 tier: frontend
         spec:
             containers:
-                - image: gcr.io/alfred-302520/backoffice-api:0.9.2
+                - image: gcr.io/alfred-302520/stg-backoffice-api:0.1
                   #command: ["sleep 600"]
                   imagePullPolicy: IfNotPresent
                   name: backoffice
@@ -38,17 +38,17 @@ spec:
                   terminationMessagePolicy: File
                   envFrom:
                   - configMapRef:
-                      name: backoffice-config
+                      name: stg-backoffice-config
                   env:
                       - name: SERVER_DBUSER
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-backoffice
+                                name: stg-credentials-backoffice
                                 key: username
                       - name: SERVER_DBPASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: credentials-backoffice
+                                name: stg-credentials-backoffice
                                 key: password                      
             dnsPolicy: ClusterFirst
             restartPolicy: Always

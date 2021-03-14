@@ -1,12 +1,12 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: supplier-ssl-ingress
+    name: stg-supplier-ssl-ingress
     namespace: supplier
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: supplier-ssl-ingress-ip
-        networking.gke.io/managed-certificates: supplier-ssl-certificate
-        networking.gke.io/v1beta1.FrontendConfig: "supplier-frontend-config"
+        kubernetes.io/ingress.global-static-ip-name: stg-supplier-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-supplier-ssl-certificate
+        networking.gke.io/v1beta1.FrontendConfig: "stg-supplier-frontend-config"
         #nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         #kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -17,7 +17,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: supplier.alfreddelivery.com
+        - host: dev-supplier.alfreddelivery.com
           http:
               paths:
                   - backend:

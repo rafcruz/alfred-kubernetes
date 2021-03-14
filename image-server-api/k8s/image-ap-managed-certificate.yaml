@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: image-ssl-certificate
+    name: stg-image-ssl-certificate
     namespace: image
 spec:
     domains:
-        - imageapi.alfreddelivery.com
+        - dev-imageapi.alfreddelivery.com

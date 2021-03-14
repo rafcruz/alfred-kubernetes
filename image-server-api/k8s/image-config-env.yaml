@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: image-config
+  name: stg-image-config
   namespace: image
 data:
   SERVER_PORT: "3200"

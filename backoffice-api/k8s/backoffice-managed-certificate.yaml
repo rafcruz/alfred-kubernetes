@@ -1,8 +1,8 @@
 apiVersion: networking.gke.io/v1beta1
 kind: ManagedCertificate
 metadata:
-    name: backoffice-ssl-certificate
+    name: stg-backoffice-ssl-certificate
     namespace: backoffice
 spec:
     domains:
-        - backofficeapi.alfreddelivery.com
+        - dev-backofficeapi.alfreddelivery.com

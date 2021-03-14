@@ -1,11 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-    name: alfred-ssl-ingress
+    name: stg-alfred-ssl-ingress
     namespace: alfred
     annotations:
-        kubernetes.io/ingress.global-static-ip-name: alfred-ssl-ingress-ip
-        networking.gke.io/managed-certificates: alfred-ssl-certificate
+        kubernetes.io/ingress.global-static-ip-name: stg-alfred-ssl-ingress-ip
+        networking.gke.io/managed-certificates: stg-alfred-ssl-certificate
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         kubernetes.io/ingress.allow-http: "false"
         nginx.ingress.kubernetes.io/proxy-connect-timeout: "240s"
@@ -16,7 +16,7 @@ metadata:
         ingress.kubernetes.io/proxy-read-timeout: "240s"
 spec:
     rules:
-        - host: alfredapi.alfreddelivery.com
+        - host: dev-alfredapi.alfreddelivery.com
           http:
               paths:
                   - backend:
